@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cp ~/apps/nudelabel-vue/dist/* ~/apps/nudelabel/client/libs/js/

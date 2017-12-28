@@ -10,6 +10,9 @@ var app = express();
 var morgan = require('morgan');
 var path = require('path');
 var ejslocals = require('ejs-locals');
+var mongo = require('mongodb');
+var mongodb = require('./database/mongo');
+var routes = require('./routes'); // Routes for our application
 
 
 //Middleware (used to be bundled with Express 3.0)
@@ -37,19 +40,35 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'client')));
 
+var env = process.env.NODE_ENV || 'development';
 
-/** 
- * Start Server
+// development only
+if (env === 'development') {
+    app.use(errorHandler());
+}
+
+// production only
+if (env === 'production') {
+    // TODO
+}
+
+/**
+ * Connect to MongoDB and start server
  */
 
-app.listen(app.get('port'), '0.0.0.0', function() {
-	console.log('Express server listening on port ' + app.get('port'));
+mongodb.init(function (err, db) {
+	if (err) {
+		console.log(err);
+	} else {
+		
+		console.log("Connected to MongoDB! Yay!")
+		
+		// Routes
+		routes(app,db);
+		
+		app.listen(app.get('port'), function() {
+		    console.log('Express server listening on port ' + app.get('port'));
+		});
+
+	}
 });
-
-
-/** 
- * Start Routing!
- */
-
-var routes = require('./routes'); // Routes for our application
-routes(app)

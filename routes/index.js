@@ -1,59 +1,37 @@
+//Routing files
+var views = require('./views');
+var stock = require('../database/stock');
+//var general = require('../database/general');
 
 
-module.exports = exports = function(app) {
+module.exports = exports = function(app, db) {
 
 	//var stock = new stockData(db);
 
 
-/** VIEWS */
 
-var views = require('./views');
 
-	app.get('', views.home);
+	/** VIEWS */
 	app.get('/', views.home);
-	app.get('/database', views.database);
-	app.get('/faes', views.faes);
-	app.get('/sandbox', views.sandbox);
-	app.get('/graphs', views.graphs);
-	app.get('/graphs/:graphID', views.graphID);
+	app.get('/stock', views.stock);
+	app.get('/sales', views.sales);
+	app.get('/production', views.production);
+	//app.get('/stock/:productID', views.productID);
 
 
+	// Load / Update / Delete stuff with MongoDB
+	app.get('/rest/stock/allstock', stock.getstock);
+	//app.get('/rest/stock/stockquery', stock.querystock);
+	//app.get('/rest/stock/product_id', stock.getOneproduct);
 
-/** CRUD - create, read, update, delete stuff from REST calls */
-
-var crud = require('./crud')
 	
-	//Gets
-	app.get('/rest/graph', crud.graph);
-
-
 	// Posts
-	app.post('/rest/upload', crud.uploadFile);
+	//app.post('/rest/stock/addproduct', stock.addproduct);
 
 
-	// Deletes
-	//app.delete('/rest/postgresdb/delete', postgresdb.delete);
+	// Delete
+	//app.delete('/rest/stock/deleteproducts', stock.delete);
 	//app.delete('/rest/database/deleteall', general.deleteall);
 
-
-
-
-/** DATABASE calls */
-
-var postgres = require('./postgres') 
-	
-	//Gets
-	app.get('/db/connect', postgres.connect); //connect to LOCALHOST database
-	app.get('/db/hconnect', postgres.hconnect); //connect to HEROKU database
-
-
-	// Posts
-	app.post('/db/addmessage', postgres.addMessage);
-	//app.post('/db/upload', mysql.uploadFile);
-
-
-	// Deletes
-	//app.delete('/db/postgresdb/delete', postgresdb.delete);
-	//app.delete('/db/database/deleteall', general.deleteall);
 
 }
