@@ -6,17 +6,18 @@ exports.home = function(req, res) {
     res.render('views/home');
 };
 
-exports.stock = function(req, res) {
-    res.render('views/stock');
+exports.auction = function(req, res) {
+    res.render('views/auction');
 };
 
-exports.sales = function(req, res) {
-    res.render('views/sales');
+exports.auctionID = function(req, res) {
+    res.render('views/auctionID');
 };
 
-exports.production = function(req, res) {
-    res.render('views/production');
+exports.about = function(req, res) {
+    res.render('views/about');
 };
+
 
 
 

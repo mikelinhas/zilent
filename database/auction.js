@@ -1,5 +1,5 @@
 var mongodb = require('./mongo')
-var collectionName = "stock"
+var collectionName = "auction"
 
 // GET
 	

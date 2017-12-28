@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cp ~/apps/nudelabel-vue/dist/* ~/apps/nudelabel/client/libs/js/
+cp ~/apps/zilent-vue/dist/* ~/apps/zilent/client/libs/js/

@@ -1,6 +1,6 @@
 //Routing files
 var views = require('./views');
-var stock = require('../database/stock');
+var auction = require('../database/auction');
 //var general = require('../database/general');
 
 
@@ -13,16 +13,14 @@ module.exports = exports = function(app, db) {
 
 	/** VIEWS */
 	app.get('/', views.home);
-	app.get('/stock', views.stock);
-	app.get('/sales', views.sales);
-	app.get('/production', views.production);
-	//app.get('/stock/:productID', views.productID);
+	app.get('/auction', views.auction)
+	app.get('/auction/:auctionID', views.auctionID);
+	app.get('/about', views.about);
 
 
 	// Load / Update / Delete stuff with MongoDB
-	app.get('/rest/stock/allstock', stock.getstock);
-	//app.get('/rest/stock/stockquery', stock.querystock);
-	//app.get('/rest/stock/product_id', stock.getOneproduct);
+	//app.get('/rest/auction/all', auction.getauctions);
+	//app.get('/rest/auction/:auctionID', auction.getOneauction);
 
 	
 	// Posts
