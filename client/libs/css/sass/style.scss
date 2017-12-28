@@ -1,0 +1,36 @@
+@import "bootstrap";
+
+.center {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bottom-right {
+    position:absolute;
+    bottom:10%;
+    right:2%;
+}
+
+.bottom-center {
+  position: absolute;
+  bottom: 5%;
+  right: 10%;
+}
+
+.btn-grey {
+	background-color: lightgrey;
+}
+
+.btn-grey:hover {
+	background-color: darkgrey;
+}
+
+thead th:hover {
+	cursor: pointer;
+}
+
+.btn-circle {
+  border-radius: 50%;
+}
+

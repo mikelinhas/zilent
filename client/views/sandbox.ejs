@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title> HndX | Sandbox </title>
+
+    <!-- ICON -->
+    <link href="/drop.ico" rel="icon" type="image/x-icon" />
+
+    <!-- CSS  -->
+    <link rel="stylesheet" href="libs/css/font-awesome.min.css">
+    <link rel="stylesheet" href="libs/css/style.css">
+
+    <!-- JavaScripts -->
+    <script rel="javascript" src="libs/js/jquery.min.js"></script>
+    <script rel="javascript" src="libs/js/bootstrap.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <i class="fa fa-yelp fa-lg" style="color: #dfe9ed"></i>
+          </button>
+          <a class="navbar-brand" href="">HndX</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Home</a></li>
+            <li><a href="/database">Database</a></li>
+            <li><a href="/graphs">Graphs</a></li>
+            <li><a href="/sandbox"><strong>Sandbox</strong></a></li>
+            <li><a href="/faes">Faesss</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+
+      </div>
+    </div>
+
+    <!-- BODY (app) -->
+
+    <div class="row" id="app" style="margin-left: 15px; margin-right: 15px">
+      <div class="container">
+        <h3>{{message}}</h3>
+        <button class="btn btn-success" v-on:click="buildGraph">Build a graphly</button>
+      </div>
+
+      <br>
+
+      <!--UPLOAD 1-->
+      <div class="container">
+        <h2>Upload a file</h2>        
+        <div v-if="!image">
+          <input type="file" @change="onFileChange">
+        </div>
+        <div v-if="image">
+          <img :src="image" />
+          <button @click="removeImage">Remove image</button>
+          <button @click="uploadFile">Upload</button>
+        </div>
+        <p>Uploaded Files: {{uploadedFiles}} </p>
+        <p v-if="errorMessage">{{errorMessage}}</p>
+  
+      </div>
+
+
+
+    </div>
+
+  </body>
+
+<script rel="javascript" src="vue/app.js"></script>
+
+</html>
+
