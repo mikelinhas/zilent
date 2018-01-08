@@ -3,7 +3,7 @@ var collectionName = "auction"
 
 // GET
 	
-	exports.getstock = function (req,res) {
+	exports.getItems = function (req,res) {
 		mongodb.findAll(collectionName, function (err,result) {
 			if (err){
 				console.log(err);

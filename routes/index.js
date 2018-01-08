@@ -19,7 +19,7 @@ module.exports = exports = function(app, db) {
 
 
 	// Load / Update / Delete stuff with MongoDB
-	//app.get('/rest/auction/all', auction.getauctions);
+	app.get('/db/queryItems', auction.getItems);
 	//app.get('/rest/auction/:auctionID', auction.getOneauction);
 
 	
