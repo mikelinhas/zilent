@@ -5,8 +5,7 @@ var Server = mongo.Server;
 var Db     = mongo.Db;
 var BSON   = mongo.BSONPure;
 var MongoClient = mongo.MongoClient;
-var MONGOHQ_URL="mongodb://mike:123@ds139904.mlab.com:39904/heroku_t46jzvdd";
-//var MONGOHQ_URL= 'mongodb://localhost:27017/aquodb';
+var MONGOHQ_URL="mongodb://mike:123@ds245287.mlab.com:45287/heroku_p2gfj1kc";
 var db;
 
 // Init
