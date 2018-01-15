@@ -34,5 +34,7 @@ module.exports = exports = function(app, db) {
 
 
 	/** LOADER IO **/
-	app.get('/loaderio-8cad0eb724256d95a5e5f31df5de5b',  res.render('loaderio-8cad0eb724256d95a5e5f31df5de5b.txt'))
+	app.get('/loaderio-8cad0eb724256d95a5e5f31df5de5b',  function(req,res) {
+		res.render('loaderio-8cad0eb724256d95a5e5f31df5de5b');
+	});
 }
