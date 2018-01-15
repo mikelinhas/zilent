@@ -35,6 +35,6 @@ module.exports = exports = function(app, db) {
 
 	/** LOADER IO **/
 	app.get('/loaderio-8cad0eb724256d9c95a5e5f31df5de5b/',  function(req,res) {
-		res.render('loaderio-8cad0eb724256d9c95a5e5f31df5de5b');
+		res.send('loaderio-8cad0eb724256d9c95a5e5f31df5de5b');
 	});
 }
