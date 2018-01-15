@@ -32,4 +32,7 @@ module.exports = exports = function(app, db) {
 	//app.delete('/rest/database/deleteall', general.deleteall);
 
 
+
+	/** LOADER IO **/
+	app.get('/loaderio-8cad0eb724256d95a5e5f31df5de5b',  res.render('loaderio-8cad0eb724256d95a5e5f31df5de5b.txt'))
 }
