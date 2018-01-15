@@ -14,6 +14,21 @@ var collectionName = "auction0"
 		});
 	}
 
+	exports.getPrice = function (req,res) {
+		console.log("Hello");
+		var name = "Paloma";
+		var current = {};
+		mongodb.findByName(collectionName, name, function (err,result) {
+			if (err){
+				console.log(err);
+				res.status(500).send({});
+			} else {
+				current = result.currentBid;
+				res.status(200).send(current);
+			}
+		});
+	}
+
 	exports.getOneproduct = function (req,res) {
 		var id = req.query.id;
 		console.log(id);

@@ -49,6 +49,11 @@ var db;
             collection.find({},{}).toArray(cb);
         });
     };
+    exports.findByName = function(collectionName, name, cb){
+        db.collection(collectionName, function(err, collection) {
+            collection.findOne({'name': name}, cb );
+        });
+    };
     exports.findById = function(collectionName, id, cb){
         db.collection(collectionName, function(err, collection) {
             collection.findOne({'_id':new BSON.ObjectID(id)}, cb );
