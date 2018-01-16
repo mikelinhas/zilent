@@ -64,7 +64,7 @@ var userCollection = "users0"
 									console.log("name doesn't exist");
 									res.status(500).send(error[3]);
 								} else {
-									var currentAmount = +result.currentBid.amount + 20;
+									var currentAmount = +result.currentBid.amount + 19.99;
 
 									//CHECK IF AMOUNT IS LARGER THAN CURRENT AMOUNT
 									console.log(currentAmount);
