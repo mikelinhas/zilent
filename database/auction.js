@@ -64,10 +64,13 @@ var userCollection = "users0"
 									console.log("name doesn't exist");
 									res.status(500).send(error[3]);
 								} else {
-									var currentAmount = result.currentBid.amount;
+									var currentAmount = +result.currentBid.amount + 20;
 
 									//CHECK IF AMOUNT IS LARGER THAN CURRENT AMOUNT
-									if (amount > currentAmount + 20) {
+									console.log(currentAmount);
+									console.log(amount);
+
+									if (amount > currentAmount ) {
 
 										//UPDATE CURRENT BID
 										mongodb.updateCurrentBid(auctionCollection, name, amount, user, function (err,result){
