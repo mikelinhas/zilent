@@ -1,10 +1,11 @@
 var mongodb = require('./mongo')
-var collectionName = "auction0"
+var auctionCollection = "auction0"
+var userCollection = "users0"
 
 // GET
 	
 	exports.getItems = function (req,res) {
-		mongodb.findAll(collectionName, function (err,result) {
+		mongodb.findAll(auctionCollection, function (err,result) {
 			if (err){
 				console.log(err);
 				res.status(500).send({});
@@ -14,25 +15,95 @@ var collectionName = "auction0"
 		});
 	}
 
-	exports.getPrice = function (req,res) {
-		console.log("Hello");
-		var name = "Paloma";
-		var current = {};
-		mongodb.findByName(collectionName, name, function (err,result) {
-			if (err){
-				console.log(err);
-				res.status(500).send({});
+	exports.addBid = function (req,res) {
+
+		var user = req.body.user;
+		var code = req.body.code;
+		var amount = req.body.amount;
+		var date = req.body.date;
+		var name = req.body.name;
+
+		var error = [
+			{"type": 0, "message": "Empty user"},
+			{"type": 1, "message": "Empty code"},
+			{"type": 2, "message": "Empty amount"},
+			{"type": 3, "message": "User doesn't exist"},
+			{"type": 4, "message": "Code is incorrect"},
+			{"type": 5, "message": "Name doesn't exist"},
+			{"type": 6, "message": "Insufficient amount"}
+		];
+
+
+		//Check if anything is empty
+		if (user) {
+			if (code) {
+				if (amount) {
+		
+			    //FIRST CHECK USER
+			    mongodb.findByUser(userCollection, user, function (err,result) {
+						if (err){
+							res.status(500).send({});
+						} else {
+							//CHECK IF WE HAD A RESULT
+							if (result==null) {
+								console.log("user doesn't exist");
+								res.status(500).send(error[3]);
+							} else {
+								var dbCode = result.code;
+								console.log(result);
+								
+								//NOW CHECK IF USER CODE IS CORRECT
+								if (code === dbCode) {
+
+									//NOW CHECK IF BID IS BIGGER THAN CURRENTBID
+									mongodb.findByName(auctionCollection, name, function (err,result) {
+
+										//CHECK IF WE FOUND THE NAME IN THE AUCTION
+										if (result==null) {
+											console.log("name doesn't exist");
+											res.status(500).send(error[5]);
+										} else {
+											var currentAmount = result.currentBid.amount;
+
+											//CHECK IF AMOUNT IS LARGER THAN CURRENT AMOUNT
+											if (amount > currentAmount) {
+												res.status(200).send("hey man i got you!");	
+											} else {
+												console.log("amount is insufficient");
+												error[6].currentBid = result.currentBid;
+												res.status(500).send(error[6]);
+											}
+
+										}
+									})
+
+								} else {
+									console.log("code is incorrect");
+									res.status(500).send(error[4]);
+								}
+									
+							};
+						}
+					});	
+				} else {
+					console.log("empty amount");
+					res.status(500).send(error[2])
+				} 
 			} else {
-				current = result.currentBid;
-				res.status(200).send(current);
-			}
-		});
+				console.log("empty code");
+				res.status(500).send(error[1])
+			}     
+		} else {
+			console.log("emtpy user");
+			res.status(500).send(error[0])
+		}      
+
 	}
 
 	exports.getOneproduct = function (req,res) {
 		var id = req.query.id;
 		console.log(id);
-		mongodb.findById(collectionName, id, function (err,result) {
+		mongodb.findById(auctionCollection, id, function (err,result) {
 			if (err){
 				console.log(err);
 				res.status(500).send({});

@@ -20,10 +20,10 @@ module.exports = exports = function(app, db) {
 
 	// Load / Update / Delete stuff with MongoDB
 	app.get('/db/queryItems', auction.getItems);
-	app.get('/db/queryPrice', auction.getPrice);
 
 	
 	// Posts
+	app.post('/db/addBid', auction.addBid);
 	//app.post('/rest/stock/addproduct', stock.addproduct);
 
 

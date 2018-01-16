@@ -54,6 +54,11 @@ var db;
             collection.findOne({'name': name}, cb );
         });
     };
+    exports.findByUser = function(collectionName, user, cb){
+        db.collection(collectionName, function(err, collection) {
+            collection.findOne({'user': user}, cb );
+        });
+    };
     exports.findById = function(collectionName, id, cb){
         db.collection(collectionName, function(err, collection) {
             collection.findOne({'_id':new BSON.ObjectID(id)}, cb );
