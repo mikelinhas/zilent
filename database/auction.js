@@ -23,6 +23,8 @@ var userCollection = "users0"
 		var date = req.body.date;
 		var name = req.body.name;
 
+		var bid = {"date": date, "bidder": user, "amount": amount};
+
 		var error = [
 			{"type": 0, "message": "Empty user"},
 			{"type": 1, "message": "User doesn't exist"},
@@ -67,8 +69,23 @@ var userCollection = "users0"
 									//CHECK IF AMOUNT IS LARGER THAN CURRENT AMOUNT
 									if (amount > currentAmount) {
 
-										//PUSH BID TO bids ARRAY
-										res.status(200).send("hey man i got you!");	
+										//UPDATE CURRENT BID
+										mongodb.updateCurrentBid(auctionCollection, name, amount, user, function (err,result){
+											if (err) {
+												res.status(500).send({});
+											} else {
+
+												//PUSH BID TO BIDS ARRAY
+												mongodb.updateBids(auctionCollection, name, bid, function (err,result) {
+													if (err) {
+														res.status(500).send({});
+													} else {
+														res.status(200).send("hey man i got you!");	
+													}
+												})
+											}
+										})
+
 									} else {
 										console.log("amount is insufficient");
 										error[4].currentBid = result.currentBid;

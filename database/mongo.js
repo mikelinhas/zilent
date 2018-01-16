@@ -44,26 +44,46 @@ var db;
             collection.find({},{}).toArray(cb);
         });
     };
+
     exports.findAllfiltered = function(query, cb){
         db.collection(collectionName, function(err, collection) {
             collection.find({},{}).toArray(cb);
         });
     };
+
     exports.findByName = function(collectionName, name, cb){
         db.collection(collectionName, function(err, collection) {
             collection.findOne({'name': name}, cb );
         });
     };
+
     exports.findByUser = function(collectionName, user, cb){
         db.collection(collectionName, function(err, collection) {
             collection.findOne({'user': user}, cb );
         });
     };
+
     exports.findById = function(collectionName, id, cb){
         db.collection(collectionName, function(err, collection) {
             collection.findOne({'_id':new BSON.ObjectID(id)}, cb );
         });
     };
+
+    exports.updateBids = function(collectionName, name, bid, cb){  //same as insert
+
+        db.collection(collectionName, function(err, collection) {
+            collection.update({'name': name }, { $addToSet: {"bids": bid}}, {safe:true}, cb);
+        });
+
+    };
+
+    exports.updateCurrentBid = function(collectionName, name, amount, user, cb){  //same as insert
+
+        db.collection(collectionName, function(err, collection) {
+            collection.update({'name': name}, {$set: {"currentBid.amount": amount, "currentBid.bidder":user}}, {safe:true, upsert:false}, cb);
+        });
+    };
+
     exports.create = function(collectionName, data, cb){  //same as insert
             data.updatedAt = new Date();
             data.createdAt = data.updatedAt;
@@ -71,109 +91,3 @@ var db;
                 collection.insert(data, {safe:true}, cb);
             });
     };
-    exports.update = function(collectionName, id, data, cb){  //same as insert
-            if (data._id)
-                delete data._id;
-            data.updatedAt = new Date();
-            db.collection(collectionName, function(err, collection) {
-                collection.update({'_id':new BSON.ObjectID(id)}, data, {safe:true, upsert:false}, cb);
-            });
-    };
-    exports.delete = function(collectionName, id, cb){
-        db.collection(collectionName, function(err, collection) {
-            collection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, cb);
-        });
-    };
-
-    exports.deleteall = function(collectionName, cb){
-        db.collection(collectionName, function(err, collection) {
-            collection.remove({}, cb);
-        });
-    };
-
-// Site
-    exports.siteFindAll = function(collectionName, site, cb){
-        site = site || "";
-            if (site == ""){
-                cb("No site specified",0);
-                return;
-            }
-        db.collection(collectionName, function(err, collection) {
-            collection.find({'site':site}).toArray(cb);
-        });
-    };
-    exports.siteFindById = function(collectionName, site, id, cb){
-        site = site || "";
-            if (site == ""){
-                cb("No site specified",0);
-                return;
-            }
-        db.collection(collectionName, function(err, collection) {
-            collection.findOne({'_id':new BSON.ObjectID(id), 'site':site}, cb );
-        });
-    };
-    exports.siteFindByUid = function(collectionName, site, uid, cb){
-        site = site || "";
-            if (site == ""){
-                cb("No site specified",0);
-                return;
-            }
-        db.collection(collectionName, function(err, collection) {
-            collection.findOne({'UID': uid, 'site': site}, cb );
-        });
-    };
-    exports.siteCreate = function(collectionName, site, data, cb){  //same as insert
-            site = site || "";
-            if (site == ""){
-                cb("No site specified",0);
-                return;
-            }
-            data.updatedAt = new Date();
-            data.createdAt = data.updatedAt;
-            data.site = site;
-            db.collection(collectionName, function(err, collection) {
-                collection.insert(data, {safe:true}, cb);
-            });
-    };
-    exports.siteUpdate = function(collectionName, site, id, data, cb){  //same as insert
-            site = site || "";
-            if (site == ""){
-                cb("No site specified",0);
-                return;
-            }
-            if (data._id)
-                delete data._id;
-            data.updatedAt = new Date();
-            data.site = site;
-            db.collection(collectionName, function(err, collection) {
-                collection.update({'_id':new BSON.ObjectID(id), 'site':site}, data, {safe:true, upsert:false}, cb);
-            });
-    };
-
-    exports.siteUpdateByUid = function(collectionName, site, uid, data, cb){  //same as insert
-            site = site || "";
-            if (site == ""){
-                cb("No site specified",0);
-                return;
-            }
-            if (data._id)
-                delete data._id;
-            data.updatedAt = new Date();
-            data.site = site;
-            db.collection(collectionName, function(err, collection) {
-                collection.update({'UID':uid, 'site':site}, data, {safe:true, upsert:false}, cb);
-            });
-    };
-
-    exports.siteDelete = function(collectionName, site, id, cb){
-        site = site || "";
-        if (site == ""){
-            cb("No site specified",0);
-            return;
-        }
-        db.collection(collectionName, function(err, collection) {
-            collection.remove({'_id':new BSON.ObjectID(id), 'site':site}, {safe:true}, cb);
-        });
-    };
-
-
