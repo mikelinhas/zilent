@@ -67,7 +67,7 @@ var userCollection = "users0"
 									var currentAmount = result.currentBid.amount;
 
 									//CHECK IF AMOUNT IS LARGER THAN CURRENT AMOUNT
-									if (amount > currentAmount) {
+									if (amount > currentAmount + 20) {
 
 										//UPDATE CURRENT BID
 										mongodb.updateCurrentBid(auctionCollection, name, amount, user, function (err,result){
