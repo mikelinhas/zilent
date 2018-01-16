@@ -80,7 +80,7 @@ var userCollection = "users0"
 													if (err) {
 														res.status(500).send({});
 													} else {
-														res.status(200).send("hey man i got you!");	
+														res.status(200).send(bid);	
 													}
 												})
 											}
