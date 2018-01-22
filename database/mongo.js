@@ -45,6 +45,21 @@ var db;
         });
     };
 
+    exports.findAll2 = function(collectionName, cb){
+        db.collection(collectionName, function(err, collection) {
+            collection.aggregate([
+                {$unwind: "$bids"},
+                {$sort: { "_id": 1, "bids.amount": -1}},
+                {$group: { 
+                    "_id": "$_id",
+                    "name": { "$first": "$name"},
+                    "artist": { "$first": "$artist"},
+                    "bids": {"$push": "$bids"}
+                }}
+            ]).toArray(cb);
+        });
+    };
+
     exports.findAllfiltered = function(query, cb){
         db.collection(collectionName, function(err, collection) {
             collection.find({},{}).toArray(cb);
@@ -54,6 +69,22 @@ var db;
     exports.findByName = function(collectionName, name, cb){
         db.collection(collectionName, function(err, collection) {
             collection.findOne({'name': name}, cb );
+        });
+    };
+
+    exports.findByName2 = function(collectionName, name, cb){
+        db.collection(collectionName, function(err, collection) {
+            collection.aggregate([
+                {$match: {'name': name}},
+                {$unwind: "$bids"},
+                {$sort: { "_id": 1, "bids.amount": -1}},
+                {$group: { 
+                    "_id": "$_id",
+                    "name": { "$first": "$name"},
+                    "artist": { "$first": "$artist"},
+                    "bids": {"$push": "$bids"}
+                }}
+            ]).toArray(cb);
         });
     };
 
