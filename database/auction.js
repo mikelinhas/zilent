@@ -10,9 +10,6 @@ var userCollection = "users0"
 				console.log(err);
 				res.status(500).send({});
 			} else {
-				for (var i = result.length - 1; i >= 0; i--) {
-					console.log(result[i].bids)
-				};
 				res.status(200).send(result);
 			}
 		});
@@ -54,7 +51,6 @@ var userCollection = "users0"
 					} else {
 
 						var dbCode = result.code;
-						console.log(result);
 						
 						//NOW CHECK IF USER CODE IS CORRECT
 						if (code === dbCode) {
@@ -67,14 +63,10 @@ var userCollection = "users0"
 									console.log("name doesn't exist");
 									res.status(500).send(error[3]);
 								} else {
-									console.log(result[0].bids[0]);
-									var currentAmount = +result[0].bids[0].amount + 19.99;
+									var currentAmount = +result[0].bids[0].amount;
 
 									//CHECK IF AMOUNT IS LARGER THAN CURRENT AMOUNT
-									console.log(currentAmount);
-									console.log(amount);
-
-									if (amount > currentAmount ) {
+									if (amount > currentAmount + 19.99) {
 
 										//PUSH BID TO BIDS ARRAY
 										mongodb.updateBids(auctionCollection, name, bid, function (err,result) {
@@ -87,7 +79,7 @@ var userCollection = "users0"
 
 									} else {
 										console.log("amount is insufficient");
-										error[4].currentBid = result.currentBid;
+										error[4].currentBid = result[0].bids[0];
 										res.status(500).send(error[4]);
 									}
 
