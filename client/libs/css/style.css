@@ -3382,7 +3382,7 @@ tbody.collapse.in {
   position: relative;
   float: right;
   margin-right: 7px;
-  padding: 3px 3px;
+  padding-top: 5px;
   margin-top: 8px;
   margin-bottom: 8px;
   background-color: transparent;
