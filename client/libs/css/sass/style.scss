@@ -28,7 +28,6 @@
 @import "custom/navbar";
 @import "custom/panels";
 @import "custom/responsive-embed";
-@import "custom/wells";
 
 // Components w/ JavaScript
 @import "custom/modals";
@@ -39,7 +38,9 @@
 @import "custom/utilities";
 @import "custom/responsive-utilities";
 
+// My own classes
 @import "custom/clock";
+@import "custom/auction";
 
 body {
 	padding-top: 60px;
