@@ -1,13 +1,9 @@
 
 .bidding-headers-container {
 
+	//nada hace nada :(
 	display: flex;
-	justify-content: space-between;
 	width: 100%;
-
-	input {
-		width: 180px;
-	}
 
 	button {
 		pull: right;
@@ -28,7 +24,7 @@
 .item-block {
 
 	position: relative;
-	width: 50%;
+	//width: 50%;
 
 	padding: 5px;
 

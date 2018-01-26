@@ -4563,10 +4563,7 @@ tbody.collapse.in {
 
 .bidding-headers-container {
   display: flex;
-  justify-content: space-between;
   width: 100%; }
-  .bidding-headers-container input {
-    width: 180px; }
   .bidding-headers-container button {
     pull: right; }
 
@@ -4579,7 +4576,6 @@ tbody.collapse.in {
 
 .item-block {
   position: relative;
-  width: 50%;
   padding: 5px; }
   .item-block h1 {
     font-size: 20px; }
