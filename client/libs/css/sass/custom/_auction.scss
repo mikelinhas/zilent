@@ -1,18 +1,15 @@
 
-.bidding-headers-container {
-
-	//nada hace nada :(
-	display: flex;
-	width: 100%;
-
-	button {
-		pull: right;
-	}
-
-}
 
 .bidding-search {
 	margin-bottom: 15px;
+	width: 70%;
+}
+
+.bidding-headers-container {
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+
 }
 
 .item-list-container {
@@ -64,7 +61,11 @@
 }
 
 .pull-right {
-	float: right;
+	float: right !important;
+	text-align: right;
+}
+.pull-left {
+	float: left !important;
 }
 
 .shadow-box {

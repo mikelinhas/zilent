@@ -6,6 +6,7 @@
 
 // Core variables and mixins
 @import "custom/variables";
+@import "custom/customvariables";
 @import "custom/mixins";
 
 // Reset and dependencies
@@ -26,7 +27,6 @@
 @import "custom/input-groups";
 @import "custom/navs";
 @import "custom/navbar";
-@import "custom/panels";
 @import "custom/responsive-embed";
 
 // Components w/ JavaScript
@@ -35,7 +35,6 @@
 @import "custom/popovers";
 
 // Utility classes
-@import "custom/utilities";
 @import "custom/responsive-utilities";
 
 // My own classes
