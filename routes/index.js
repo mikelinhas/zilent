@@ -4,7 +4,7 @@ var auction = require('../database/auction');
 //var general = require('../database/general');
 
 
-module.exports = exports = function(app, db) {
+module.exports = exports = function(app, sse, db) {
 
 	//var stock = new stockData(db);
 
@@ -26,7 +26,8 @@ module.exports = exports = function(app, db) {
 	app.post('/db/addBid', auction.addBid);
 	//app.post('/rest/stock/addproduct', stock.addproduct);
 
-
+	// SSE
+	app.get('/auction/updates', sse(), auction.broadcastBids)
 	// Delete
 	//app.delete('/rest/stock/deleteproducts', stock.delete);
 	//app.delete('/rest/database/deleteall', general.deleteall);

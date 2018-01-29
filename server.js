@@ -13,7 +13,7 @@ var ejslocals = require('ejs-locals');
 var mongo = require('mongodb');
 var mongodb = require('./database/mongo');
 var routes = require('./routes'); // Routes for our application
-
+var sse = require('sse-express');
 
 //Middleware (used to be bundled with Express 3.0)
 var favicon = require('serve-favicon');
@@ -64,7 +64,7 @@ mongodb.init(function (err, db) {
 		console.log("Connected to MongoDB! Yay!")
 		
 		// Routes
-		routes(app,db);
+		routes(app,sse,db);
 		
 		app.listen(app.get('port'), function() {
 		    console.log('Express server listening on port ' + app.get('port'));
