@@ -13,6 +13,7 @@ var ejslocals = require('ejs-locals');
 var mongo = require('mongodb');
 var mongodb = require('./database/mongo');
 var routes = require('./routes'); // Routes for our application
+var io = require('socket.io')(http);
 
 
 //Middleware (used to be bundled with Express 3.0)
