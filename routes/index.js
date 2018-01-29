@@ -10,6 +10,8 @@ module.exports = exports = function(app, sse, db) {
 
 
 
+	// SSE
+	app.get('/auction/updates', sse(), auction.broadcastBids)
 
 	/** VIEWS */
 	app.get('/', views.home);
@@ -26,8 +28,6 @@ module.exports = exports = function(app, sse, db) {
 	app.post('/db/addBid', auction.addBid);
 	//app.post('/rest/stock/addproduct', stock.addproduct);
 
-	// SSE
-	app.get('/auction/updates', sse(), auction.broadcastBids)
 	// Delete
 	//app.delete('/rest/stock/deleteproducts', stock.delete);
 	//app.delete('/rest/database/deleteall', general.deleteall);
