@@ -1,7 +1,16 @@
+.clock-container {
+	height: 110px;
+	background-image: url('./../../photos/zambia.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
 .clock-header {
 	margin-top: 10px;
+	padding-top: 10px;
 	margin-right: 15px;
 	text-align: center;
+	color: white;
 }
 
 .clock {
@@ -16,6 +25,7 @@
 }
 
 .clock-text {
+	color: white;
 	font-size: 12px;
 	font-family: 'Roboto Condensed', serif;
 	margin-bottom: 2px;
@@ -23,6 +33,7 @@
 }
 
 .clock-digits {
+	color: white;
 	font-size: 25px;
 	font-family: 'Roboto', serif;
 	margin-top: 5px;
