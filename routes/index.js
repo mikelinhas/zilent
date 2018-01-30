@@ -11,7 +11,8 @@ module.exports = exports = function(app, sse, db) {
 
 
 	// SSE
-	app.get('/auction/updates', sse(), auction.broadcastBids)
+	app.get('/db/updates', sse(), auction.broadcastBids);
+	app.get('/db/emitbroadcast', sse(), auction.broadcastBids);
 
 	/** VIEWS */
 	app.get('/', views.home);

@@ -13,6 +13,16 @@ exports.broadcastBids = function (req,res) {
 	});
 }
 
+exports.broadcastBids2 = function (req,res) {
+	console.log("Hello");
+	res.sse({
+		event: 'broadcast',
+		data: {
+			Msg: "I'm broadcasting madafaka"
+		}
+	});
+}
+
 // GET
 	
 exports.getItems = function (req,res) {
