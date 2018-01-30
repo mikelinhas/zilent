@@ -4132,17 +4132,10 @@ tbody.collapse.in {
 @media print {
   .hidden-print {
     display: none !important; } }
-.clock-container {
-  height: 110px;
-  background-image: url("./../../photos/zambia.jpg");
-  background-size: 100%;
-  background-repeat: no-repeat; }
-
 .clock-header {
   margin-top: 10px;
   padding-top: 10px;
-  text-align: center;
-  color: white; }
+  text-align: center; }
 
 .clock {
   display: flex;
@@ -4154,14 +4147,12 @@ tbody.collapse.in {
   margin: 10px; }
 
 .clock-text {
-  color: white;
   font-size: 12px;
   font-family: 'Roboto Condensed', serif;
   margin-bottom: 2px;
   text-align: center; }
 
 .clock-digits {
-  color: white;
   font-size: 25px;
   font-family: 'Roboto', serif;
   margin-top: 5px;
