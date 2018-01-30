@@ -4,10 +4,18 @@ var auction = require('../database/auction');
 //var general = require('../database/general');
 
 
-module.exports = exports = function(app, db) {
+module.exports = exports = function(app, db, io) {
 
-	//var stock = new stockData(db);
-
+	/** SOCKETS */
+	io.on('connection', function(socket){
+		console.log('a user connected');
+			socket.on('disconnect', function() {
+				console.log("user disconnected");
+			});
+	    socket.on('chat', function (msg) {
+	    	socket.broadcast.emit('chat', msg);
+	    });
+	});
 
 
 
@@ -24,17 +32,11 @@ module.exports = exports = function(app, db) {
 	
 	// Posts
 	app.post('/db/addBid', auction.addBid);
-	//app.post('/rest/stock/addproduct', stock.addproduct);
-
-
-	// Delete
-	//app.delete('/rest/stock/deleteproducts', stock.delete);
-	//app.delete('/rest/database/deleteall', general.deleteall);
 
 
 
 	/** LOADER IO **/
-	app.get('/loaderio-8cad0eb724256d9c95a5e5f31df5de5b/',  function(req,res) {
-		res.send('loaderio-8cad0eb724256d9c95a5e5f31df5de5b');
-	});
+	//app.get('/loaderio-8cad0eb724256d9c95a5e5f31df5de5b/',  function(req,res) {
+	//	res.send('loaderio-8cad0eb724256d9c95a5e5f31df5de5b');
+	//});
 }

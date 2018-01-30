@@ -40,8 +40,8 @@ var userCollection = "users0"
 			res.status(500).send(error[0])
 		} else {
 
-	    //FIRST CHECK USER
-	    mongodb.findByUser(userCollection, user, function (err,result) {
+		    //FIRST CHECK USER
+		    mongodb.findByUser(userCollection, user, function (err,result) {
 
 				if (err){
 					res.status(500).send({});
@@ -96,7 +96,7 @@ var userCollection = "users0"
 				}
 			});	
   	
-  	}     
+  		}     
 
 	}
 
