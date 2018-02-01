@@ -3717,7 +3717,7 @@ tbody.collapse.in {
 .modal-mask {
   position: fixed;
   z-index: 9998;
-  bottom: -30;
+  bottom: -30px;
   left: 0;
   width: 100%;
   height: 130%;
