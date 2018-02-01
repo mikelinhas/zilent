@@ -4197,15 +4197,26 @@ tbody.collapse.in {
   display: flex;
   flex-wrap: wrap; }
 
-.bidding-search {
-  width: 75%;
-  margin-right: 15px; }
-
 .bidding-headers-container {
   display: flex;
   margin: 15px;
   width: 100%;
   flex-wrap: wrap; }
+
+.bidding-search {
+  width: 75%;
+  margin-right: 15px;
+  max-width: 500px; }
+
+.item-list-container {
+  width: 100%; }
+
+.item-block {
+  position: relative;
+  min-width: 100%;
+  padding: 10px; }
+  .item-block h1 {
+    font-size: 20px; }
 
 .item-name {
   margin-top: 5px;
@@ -4213,13 +4224,6 @@ tbody.collapse.in {
 
 .item-artist {
   text-align: center; }
-
-.item-block {
-  position: relative;
-  min-width: 140px;
-  padding: 10px; }
-  .item-block h1 {
-    font-size: 20px; }
 
 .item-photo img {
   width: 100%;
