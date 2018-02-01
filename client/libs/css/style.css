@@ -1205,16 +1205,16 @@ h6, .h6 {
     font-size: 75%; }
 
 h1, .h1 {
-  font-size: 36px; }
+  font-size: 22px; }
 
 h2, .h2 {
-  font-size: 30px; }
+  font-size: 21px; }
 
 h3, .h3 {
-  font-size: 24px; }
+  font-size: 14px; }
 
 h4, .h4 {
-  font-size: 18px; }
+  font-size: 14px; }
 
 h5, .h5 {
   font-size: 14px; }
@@ -2629,7 +2629,7 @@ select[multiple].input-lg,
   background-image: none;
   border: 1px solid transparent;
   white-space: nowrap;
-  padding: 6px 12px;
+  padding: 3px 4px 1px 4px;
   font-size: 14px;
   line-height: 1.42857;
   border-radius: 4px;
@@ -2657,6 +2657,40 @@ select[multiple].input-lg,
 
 a.btn.disabled, fieldset[disabled] a.btn {
   pointer-events: none; }
+
+.btn-place-bid {
+  position: absolute;
+  bottom: 7px;
+  right: 10px; }
+
+.btn-custom {
+  color: #333;
+  background-color: transparent;
+  border-color: transparent; }
+  .btn-custom:focus, .btn-custom.focus {
+    color: #333;
+    background-color: transparent;
+    border-color: transparent; }
+  .btn-custom:hover {
+    color: #333;
+    background-color: transparent;
+    border-color: transparent; }
+  .btn-custom:active, .btn-custom.active, .open > .btn-custom.dropdown-toggle {
+    color: #333;
+    background-color: transparent;
+    border-color: transparent; }
+    .btn-custom:active:hover, .btn-custom:active:focus, .btn-custom:active.focus, .btn-custom.active:hover, .btn-custom.active:focus, .btn-custom.active.focus, .open > .btn-custom.dropdown-toggle:hover, .open > .btn-custom.dropdown-toggle:focus, .open > .btn-custom.dropdown-toggle.focus {
+      color: #333;
+      background-color: transparent;
+      border-color: transparent; }
+  .btn-custom:active, .btn-custom.active, .open > .btn-custom.dropdown-toggle {
+    background-image: none; }
+  .btn-custom.disabled:hover, .btn-custom.disabled:focus, .btn-custom.disabled.focus, .btn-custom[disabled]:hover, .btn-custom[disabled]:focus, .btn-custom[disabled].focus, fieldset[disabled] .btn-custom:hover, fieldset[disabled] .btn-custom:focus, fieldset[disabled] .btn-custom.focus {
+    background-color: transparent;
+    border-color: transparent; }
+  .btn-custom .badge {
+    color: transparent;
+    background-color: #333; }
 
 .btn-default {
   color: #333;
@@ -2851,19 +2885,19 @@ a.btn.disabled, fieldset[disabled] a.btn {
     text-decoration: none; }
 
 .btn-lg {
-  padding: 10px 16px;
+  padding: 10px 16px 10px 16px;
   font-size: 18px;
   line-height: 1.33333;
   border-radius: 6px; }
 
 .btn-sm {
-  padding: 5px 10px;
+  padding: 5px 10px 5px 10px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px; }
 
 .btn-xs {
-  padding: 1px 5px;
+  padding: 1px 5px 1px 5px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px; }
@@ -4148,50 +4182,51 @@ tbody.collapse.in {
 
 .clock-text {
   font-size: 12px;
-  font-family: 'Roboto Condensed', serif;
   margin-bottom: 2px;
   text-align: center; }
 
 .clock-digits {
   font-size: 25px;
-  font-family: 'Roboto', serif;
   margin-top: 5px;
   margin-bottom: 0px;
   text-align: center; }
 
+.custom-container {
+  margin-right: -25px;
+  margin-left: -25px;
+  display: flex;
+  flex-wrap: wrap; }
+
 .bidding-search {
-  margin: 15px;
-  width: 70%; }
+  width: 75%;
+  margin-right: 15px; }
 
 .bidding-headers-container {
   display: flex;
+  margin: 15px;
   width: 100%;
   flex-wrap: wrap; }
 
-.item-list-container {
-  display: flex;
-  flex-wrap: wrap; }
+.item-name {
+  margin-top: 5px;
+  text-align: center; }
+
+.item-artist {
+  text-align: center; }
 
 .item-block {
   position: relative;
-  padding: 5px; }
+  min-width: 140px;
+  padding: 10px; }
   .item-block h1 {
     font-size: 20px; }
 
-.item-photo {
-  padding: 10px; }
-  .item-photo img {
-    width: 100%;
-    height: auto; }
+.item-photo img {
+  width: 100%;
+  height: auto; }
 
 .item-topbid {
-  border-bottom: 1px solid black;
-  text-align: right; }
-
-.btn-place-bid {
-  position: absolute;
-  bottom: 10px;
-  right: 5px; }
+  border-bottom: 1px solid #666; }
 
 .bidding-inputs {
   padding: 4px; }
