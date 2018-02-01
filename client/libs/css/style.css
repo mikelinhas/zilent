@@ -3720,7 +3720,7 @@ tbody.collapse.in {
   bottom: -30px;
   left: 0;
   width: 100%;
-  height: 130%;
+  height: 150%;
   background-color: rgba(0, 0, 0, 0.5);
   display: table;
   transition: opacity .3s ease; }
@@ -4209,12 +4209,13 @@ tbody.collapse.in {
   max-width: 500px; }
 
 .item-list-container {
-  width: 100%; }
+  width: 100%;
+  margin-right: -80px; }
 
 .item-block {
   position: relative;
   min-width: 100%;
-  padding: 10px; }
+  padding: 7px; }
   .item-block h1 {
     font-size: 20px; }
 
