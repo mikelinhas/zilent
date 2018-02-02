@@ -2902,6 +2902,12 @@ a.btn.disabled, fieldset[disabled] a.btn {
   line-height: 1.5;
   border-radius: 3px; }
 
+.btn-input {
+  padding: 6px 12px 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857;
+  border-radius: 4px; }
+
 .btn-block {
   display: block;
   width: 100%; }
@@ -3726,18 +3732,22 @@ tbody.collapse.in {
   transition: opacity .3s ease; }
 
 .modal-wrapper {
-  display: table-cell;
-  vertical-align: middle; }
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
 
 .modal-container {
   width: 300px;
   margin: 0px auto;
-  padding: 20px 30px 50px 30px;
+  padding: 10px;
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all .3s ease;
   font-family: Helvetica, Arial, sans-serif; }
+  .modal-container p {
+    text-align: center; }
 
 .modal-header h3 {
   margin-top: 0;
@@ -3767,6 +3777,11 @@ tbody.collapse.in {
 .modal-leave-active .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1); }
+
+#close-modal {
+  position: absolute;
+  top: 0px;
+  right: 0px; }
 
 .tooltip {
   position: absolute;
@@ -4191,6 +4206,9 @@ tbody.collapse.in {
   margin-bottom: 0px;
   text-align: center; }
 
+.redtext {
+  color: red; }
+
 .custom-container {
   margin-right: -25px;
   margin-left: -25px;
@@ -4254,13 +4272,22 @@ tbody.collapse.in {
   background-color: rgba(0, 0, 0, 0.3); }
 
 .slide-fade-enter-active {
-  transition: all 0.2s ease; }
+  transition: all 1s ease; }
 
 .slide-fade-leave-active {
-  transition: all 0.2s ease; }
+  transition: all 1s ease; }
 
 .slide-fade-enter, .slide-fade-leave-to {
-  opacity: 0; }
+  opacity: 0.2; }
+
+.digit-fade-enter-active {
+  transition: all 0.1s ease; }
+
+.digit-fade-leave-active {
+  transition: all 0.4s ease; }
+
+.digit-fade-enter, .digit-fade-leave-to {
+  opacity: 0.2; }
 
 body {
   padding-top: 40px; }

@@ -263,6 +263,9 @@ a.btn {
 .btn-xs {
   @include button-size($padding-xs-vertical, $padding-xs-vertical, $padding-xs-horizontal, $font-size-small, $line-height-small, $btn-border-radius-small);
 }
+.btn-input {
+  @include button-size($padding-base-vertical, $padding-base-vertical, $padding-base-horizontal, $font-size-base, $line-height-base, $btn-border-radius-base);
+}
 
 
 // Block button
