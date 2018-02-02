@@ -2903,7 +2903,7 @@ a.btn.disabled, fieldset[disabled] a.btn {
   border-radius: 3px; }
 
 .btn-input {
-  padding: 6px 12px 6px 12px;
+  padding: 6px 12px 7px 12px;
   font-size: 14px;
   line-height: 1.42857;
   border-radius: 4px; }
