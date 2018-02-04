@@ -42,6 +42,7 @@ var db;
                     "_id": "$_id",
                     "name": { "$first": "$name"},
                     "artist": { "$first": "$artist"},
+                    "image": { "$first": "$image"},
                     "bids": {"$push": "$bids"}
                 }}
             ]).toArray(cb);

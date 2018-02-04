@@ -3,6 +3,14 @@
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+@font-face {
+  font-family: 'orator';
+  src: url("../fonts/orator/orator-regular.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/orator/orator-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/orator/orator-regular.woff2") format("woff2"), url("../fonts/orator/orator-regular.woff") format("woff"), url("../fonts/orator/orator-regular.ttf") format("truetype"), url("../fonts/orator/orator-regular.svg#svgFontName") format("svg");
+  /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal; }
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
@@ -1067,7 +1075,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "Orator";
+  font-family: "orator", sans-serif;
   font-size: 14px;
   line-height: 1.42857;
   color: #333333;
@@ -1150,7 +1158,7 @@ hr {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: inherit;
+  font-family: "orator", sans-serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit; }
@@ -3744,8 +3752,7 @@ tbody.collapse.in {
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-  transition: all .3s ease;
-  font-family: Helvetica, Arial, sans-serif; }
+  transition: all .3s ease; }
   .modal-container p {
     text-align: center; }
 
@@ -3787,7 +3794,7 @@ tbody.collapse.in {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Orator";
+  font-family: "orator", sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -3893,7 +3900,7 @@ tbody.collapse.in {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Orator";
+  font-family: "orator", sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -4237,12 +4244,13 @@ tbody.collapse.in {
   .item-block h1 {
     font-size: 20px; }
 
-.item-name {
-  margin-top: 5px;
-  text-align: center; }
+.info-link {
+  float: right;
+  text-align: right; }
 
-.item-artist {
-  text-align: center; }
+.item-name {
+  text-transform: uppercase;
+  margin-top: 5px; }
 
 .item-photo img {
   width: 100%;
