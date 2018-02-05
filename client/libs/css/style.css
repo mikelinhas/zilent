@@ -4248,9 +4248,9 @@ tbody.collapse.in {
   float: right;
   text-align: right; }
 
-.item-name {
-  text-transform: uppercase;
-  margin-top: 5px; }
+.item-artist {
+  margin-top: 5px;
+  text-transform: uppercase; }
 
 .item-photo img {
   width: 100%;
