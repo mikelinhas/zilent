@@ -15,6 +15,7 @@ var userCollection = "users0"
 		});
 	}
 
+	// This function is way too messy... in the future should clean it up a bit
 	exports.addBid = function (req,res) {
 
 		var user = req.body.user;
@@ -64,32 +65,26 @@ var userCollection = "users0"
 							//NOW CHECK IF BID IS BIGGER THAN CURRENTBID
 							mongodb.findByName(auctionCollection, name, function (err,result) {
 
-								//CHECK IF WE FOUND THE NAME IN THE AUCTION
-								if (result==null) {
-									console.log("name doesn't exist");
-									res.status(500).send(error[3]);
+								var currentAmount = +result[0].bids[0].amount;
+
+								//CHECK IF AMOUNT IS LARGER THAN CURRENT AMOUNT
+								if (amount > currentAmount + 19.99) {
+
+									//PUSH BID TO BIDS ARRAY
+									mongodb.updateBids(auctionCollection, name, bid, function (err,result) {
+										if (err) {
+											res.status(500).send({});
+										} else {
+											res.status(200).send(bid);	
+										}
+									})
+
 								} else {
-									var currentAmount = +result[0].bids[0].amount;
-
-									//CHECK IF AMOUNT IS LARGER THAN CURRENT AMOUNT
-									if (amount > currentAmount + 19.99) {
-
-										//PUSH BID TO BIDS ARRAY
-										mongodb.updateBids(auctionCollection, name, bid, function (err,result) {
-											if (err) {
-												res.status(500).send({});
-											} else {
-												res.status(200).send(bid);	
-											}
-										})
-
-									} else {
-										console.log("amount is insufficient");
-										error[4].currentBid = result[0].bids[0];
-										res.status(500).send(error[4]);
-									}
-
+									console.log("amount is insufficient");
+									error[4].currentBid = result[0].bids[0];
+									res.status(500).send(error[4]);
 								}
+
 							})
 						} 	
 					};

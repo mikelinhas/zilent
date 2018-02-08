@@ -1,3 +1,0 @@
-#!/bin/bash
-
-cp ~/apps/zilent-vue/dist/* ~/apps/zilent/client/libs/js/

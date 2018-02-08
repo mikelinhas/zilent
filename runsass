@@ -1,3 +1,0 @@
-#!/bin/bash
-
-sass --watch client/libs/css/sass:client/libs/css

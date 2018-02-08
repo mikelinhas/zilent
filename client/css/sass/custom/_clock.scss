@@ -1,0 +1,37 @@
+.clock-container {
+
+}
+
+.clock-header {
+	margin-top: 10px;
+	padding-top: 10px;
+	text-align: center;
+}
+
+.clock {
+	display: flex;
+	width: 280px;
+	margin: auto;
+}
+
+.clock-block {
+	width: 45px;
+	margin: 10px;
+}
+
+.clock-text {
+	font-size: 12px;
+	margin-bottom: 2px;
+	text-align: center;
+}
+
+.clock-digits {
+	font-size: 25px;
+	margin-top: 5px;
+	margin-bottom: 0px;
+	text-align: center;
+}
+
+.redtext {
+	color: red;
+}

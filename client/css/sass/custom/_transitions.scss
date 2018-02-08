@@ -1,0 +1,53 @@
+// Fade effect for the clock
+.digit-fade-leave-active {
+    transition: all 0.4s ease;
+}
+
+.digit-fade-enter-active {
+    transition: all 0.1s ease;
+}
+
+.digit-fade-enter, .digit-fade-leave-to {
+    opacity: 0.2;
+}
+
+
+// Bounce in effect
+.green-in-leave-active {
+    transition: all 0.2s ease;
+}
+
+.green-in-enter-active {
+    animation: green-in 0.6s;
+}
+
+.green-in-enter, .green-in-leave-to {
+    opacity: 0.2;
+}
+
+@keyframes green-in {
+	0% {
+		color: green;
+		transform: scale(1);
+	}
+	50% {
+		color: green;
+		transform: scale(1.05);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+// Just a fade effect
+.slide-fade-enter-active {
+    transition: all 1s ease;
+}
+
+.slide-fade-leave-active {
+    transition: all 1s ease;
+}
+
+.slide-fade-enter, .slide-fade-leave-to {
+    opacity: 0.2;
+}
