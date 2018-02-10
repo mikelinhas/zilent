@@ -8,13 +8,6 @@
 // Provide a static navbar from which we expand to create full-width, fixed, and
 // other navbar variations.
 
-.navbar-title {
-  float: right;
-  font-size: 14px !important;
-  height: $navbar-height;
-  line-height: $navbar-height;
-}
-
 .navbar {
   position: relative;
   min-height: $navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
@@ -38,9 +31,6 @@
 
 .navbar-header {
   @include clearfix;
-
-  width: 100%;
-
   @media (min-width: $grid-float-breakpoint) {
     float: left;
   }

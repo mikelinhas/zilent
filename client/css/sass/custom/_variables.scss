@@ -53,18 +53,29 @@ $link-hover-decoration: underline !default;
     font-style: normal
 }
 
+@font-face {
+	font-family: 'futura';
+	src: url('../fonts/futura-lt/Futura LT Light.eot'); /* IE9 Compat Modes */
+	src: url('../fonts/futura-lt/Futura LT Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    	url('../fonts/futura-lt/Futura LT Light.woff') format('woff'), /* Pretty Modern Browsers */
+    	url('../fonts/futura-lt/Futura LT Light.ttf')  format('truetype'), /* Safari, Android, iOS */
+    	url('../fonts/futura-lt/Futura LT Light.svg#svgFontName') format('svg'); /* Legacy iOS */
+    font-weight: 20;
+    font-style: normal
+}
 //## Font, line-height, and color for body text, headings, and more.
 
 $font-family-garamond:    Garamond, Baskerville, Times New Roman, serif !default;
 $font-family-orator:      "orator", sans-serif !default;
+$font-family-futura:      "futura", sans-serif !default;
 $font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
-$font-family-base:        $font-family-orator !default;
+$font-family-base:        $font-family-futura !default;
 
-$font-size-base:          14px !default;
+$font-size-base:          15px !default;
 $font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
 $font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~12px
 
@@ -81,7 +92,7 @@ $line-height-base:        1.428571429 !default; // 20/14
 $line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~20px
 
 //** By default, this inherits from the `<body>`.
-$headings-font-family:    $font-family-orator !default;
+$headings-font-family:    $font-family-futura !default;
 $headings-font-weight:    500 !default;
 $headings-line-height:    1.1 !default;
 $headings-color:          inherit !default;
