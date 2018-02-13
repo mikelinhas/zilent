@@ -46,8 +46,8 @@ $btn-border-radius-small:        $border-radius-small !default;
 $btn-padding-vertical:           2px !default;
 $btn-padding-horizontal:         4px !default;
 
-$btn-padding-top:                ($btn-padding-vertical + 1) !default;
-$btn-padding-bottom:             ($btn-padding-vertical - 1) !default;
+$btn-padding-top:                ($btn-padding-vertical) !default;
+$btn-padding-bottom:             ($btn-padding-vertical) !default;
 
 
 
@@ -176,9 +176,10 @@ a.btn {
 // Alternate buttons
 // --------------------------------------------------
 .btn-place-bid {
-  position: absolute;
-  bottom: 7px;
-  right: 10px;
+  position: relative;
+  float: right;
+  bottom: 35px;
+  margin-bottom: -30px;
 }
 
 .btn-custom {

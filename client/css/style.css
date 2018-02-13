@@ -2645,7 +2645,7 @@ select[multiple].input-lg,
   background-image: none;
   border: 1px solid transparent;
   white-space: nowrap;
-  padding: 3px 4px 1px 4px;
+  padding: 2px 4px 2px 4px;
   font-size: 15px;
   line-height: 1.42857;
   border-radius: 4px;
@@ -2675,9 +2675,10 @@ a.btn.disabled, fieldset[disabled] a.btn {
   pointer-events: none; }
 
 .btn-place-bid {
-  position: absolute;
-  bottom: 7px;
-  right: 10px; }
+  position: relative;
+  float: right;
+  bottom: 35px;
+  margin-bottom: -30px; }
 
 .btn-custom {
   color: #333;
@@ -4236,6 +4237,15 @@ tbody.collapse.in {
   width: 100%;
   flex-wrap: wrap; }
 
+.bidding-inputs {
+  padding: 4px; }
+  .bidding-inputs input {
+    margin-bottom: 3px; }
+  .bidding-inputs p {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    min-height: 21px; }
+
 .bidding-search {
   width: 75%;
   margin-right: 15px;
@@ -4270,11 +4280,6 @@ tbody.collapse.in {
 
 .item-topbid {
   border-bottom: 1px solid #666; }
-
-.bidding-inputs {
-  padding: 4px; }
-  .bidding-inputs input {
-    margin-bottom: 3px; }
 
 .pull-right {
   float: right !important;

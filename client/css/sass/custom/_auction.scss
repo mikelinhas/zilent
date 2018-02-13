@@ -13,6 +13,20 @@
 
 }
 
+.bidding-inputs {
+	padding: 4px;
+
+	input {
+		margin-bottom: 3px;
+	}
+
+	p {
+		margin-top: 5px;
+		margin-bottom: 0px;
+		min-height: $line-height-computed;
+	}
+
+}
 .bidding-search {
 	width: 75%;
 	margin-right: 15px;
@@ -65,14 +79,6 @@
 	border-bottom: 1px solid #666;
 }
 
-.bidding-inputs {
-	padding: 4px;
-
-	input {
-		margin-bottom: 3px;
-	}
-
-}
 
 .pull-right {
 	float: right !important;
