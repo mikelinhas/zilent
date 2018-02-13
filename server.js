@@ -58,8 +58,7 @@ if (env === 'production') {
 // SSL connection
 var sslOptions = {
   key: fs.readFileSync('ssl/key.pem'),
-  cert: fs.readFileSync('ssl/cert.pem'),
-  passphrase: 'Elvis123!'
+  cert: fs.readFileSync('ssl/cert.pem')
 };
 
 
