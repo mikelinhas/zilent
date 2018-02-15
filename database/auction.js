@@ -1,6 +1,9 @@
 var mongodb = require('./mongo')
-var auctionCollection = "auction0"
-var userCollection = "users0"
+var auctionCollection = "auction"
+var userCollection = "users"
+
+var deadline = new Date("2018-02-16T19:40:05Z");
+// Note: must be one hour less than in Spain
 
 // GET
 	
@@ -21,24 +24,32 @@ var userCollection = "users0"
 		var user = req.body.user;
 		var code = req.body.code;
 		var amount = +req.body.amount;
-		var date = req.body.date;
+		var date = new Date();
 		var name = req.body.name;
 
 		var bid = {"date": date, "bidder": user, "amount": amount};
 
 		var error = [
-			{"type": 0, "message": "Empty user"},
-			{"type": 1, "message": "User doesn't exist"},
-			{"type": 2, "message": "Code is incorrect"},
-			{"type": 3, "message": "Name doesn't exist"},
+			{"type": 0, "message": "Rellene el usuario"},
+			{"type": 1, "message": "El usuario no existe"},
+			{"type": 2, "message": "Contraseña incorrecta"},
+			{"type": 3, "message": "Demasiado tarde, la subasta ha acabado :("},
 			{"type": 4, "message": "Insufficient amount"}
 		];
 
 
-		//0 - Check if anything is empty
-		if (!user) {
+		//0 - Check if auction is still on
+		if (date > deadline) {
+
+			console.log("bidding is over");
+			res.status(500).send(error[3]);
+
+		//1 - Check if anything is empty
+		} else if (!user) {
+
 			console.log("emtpy user");
 			res.status(500).send(error[0])
+
 		} else {
 
 	    //FIRST CHECK USER

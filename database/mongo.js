@@ -5,14 +5,15 @@ var Server = mongo.Server;
 var Db     = mongo.Db;
 var BSON   = mongo.BSONPure;
 var MongoClient = mongo.MongoClient;
-var MONGOHQ_URL="mongodb://mike:123@ds245287.mlab.com:45287/heroku_p2gfj1kc";
+var MONGO_REMOTE="mongodb://mike:123@ds245287.mlab.com:45287/heroku_p2gfj1kc";
+var MONGO_LOCAL="mongodb://127.0.0.1:27017/auctiondb";
 var db;
 
 // Init
     exports.init = function(cb){
             //db.open(cb);
             console.log("connecting to MongoDB...");
-            MongoClient.connect(MONGOHQ_URL, 
+            MongoClient.connect(MONGO_LOCAL, 
                 // {server: {
                 //     auto_reconnect: true,
                 //     socketOptions: {
@@ -99,3 +100,9 @@ var db;
             collection.update({'name': name}, {$set: {"currentBid.amount": amount, "currentBid.bidder":user}}, {safe:true, upsert:false}, cb);
         });
     };
+
+    exports.insert = function(collectionName, documents, cb){
+        db.collection(collectionName, function(err, collection) {
+            collection.insert(documents, cb)
+        });
+    }

@@ -1,7 +1,3 @@
-var mongo = require('mongodb');
-var mongodb = require('./database/mongo');
-
-var items = 
 [
 	{"_id":"Calo",
 	"artist":"Calo Carratalá",
@@ -51,28 +47,4 @@ var items =
 	"image":"Unsain",
 	"bids": [{"bidder": "","amount": 10}]
 	}
-];
-
-mongodb.init(function (err, db) {
-	if (err) {
-		console.log(err);
-	} else {
-		
-		console.log("Connected to MongoDB! Yay!")
-
-		var collection = db.collection("auction");
-
-	    mongodb.insert('auction', items, function (err, result) {
-	    	if (err) {
-	    		console.log (err);
-	    		res.status(500).send({});
-	    	} else {
-	    		console.log(result);
-	    		console.log ("items were added to auction collection.. check them out");
-	    	}
-	    });		
-	}
-});
-
-
-
+]
