@@ -3462,10 +3462,10 @@ tbody.collapse.in {
 .navbar-nav {
   margin: 3.625px -7px; }
   .navbar-nav > li > a {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    line-height: 21px;
+    line-height: 30px;
     color: #333333; }
+  .navbar-nav > li > a > img {
+    height: 30px; }
   @media (max-width: 767px) {
     .navbar-nav .open .dropdown-menu {
       position: static;

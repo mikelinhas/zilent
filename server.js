@@ -55,12 +55,6 @@ if (env === 'production') {
     // TODO
 }
 
-// SSL connection
-var sslOptions = {
-  key: fs.readFileSync('ssl/key.pem'),
-  cert: fs.readFileSync('ssl/cert.pem')
-};
-
 
 /**
  * Connect to MongoDB and start server
@@ -76,8 +70,6 @@ mongodb.init(function (err, db) {
 		// Routes
 		routes(app,db);
 		
-		//http.createServer(app).listen('port', function() {
-		//https.createServer(sslOptions, app).listen('port', function() {
 		app.listen(app.get('port'), function() {
 		    console.log('Express server listening on port ' + app.get('port'));
 		});

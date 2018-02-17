@@ -2,15 +2,55 @@ var mongodb = require('./mongo')
 var auctionCollection = "auction"
 var userCollection = "users"
 
-var deadline = new Date("2018-02-16T19:40:05Z");
+var deadline = new Date("2018-02-18T14:45:03Z");
 // Note: must be one hour less than in Spain
+
+var winston = require('winston');
+
+const customLevels = { 
+  error: 0, 
+  info: 1, 
+  warn: 2
+}
+
+var timestamp = function (date) {
+	hour = doubledigit(date.getHours());
+	mins = doubledigit(date.getMinutes());
+	secs = doubledigit(date.getSeconds());
+	return "[" + hour + ":" + mins + ":" + secs + "] - "
+}
+
+var doubledigit = function (value) {
+	if(value.toString().length <= 1) {
+        return "0"+value.toString();
+    }
+    return value.toString();
+}
+
+
+const logger = winston.createLogger({
+	levels: customLevels,
+    transports: [
+	    new winston.transports.File({
+	      filename: 'bids.log',
+	      level: 'info'
+	    }),
+	    new winston.transports.File({
+	      filename: 'errors.log',
+	      level: 'warn'
+	    })
+    ]
+});
+
+
 
 // GET
 	
 	exports.getItems = function (req,res) {
 		mongodb.findAll(auctionCollection, function (err,result) {
 			if (err){
-				console.log(err);
+				logger.warn(timestamp(new Date) + "Can't query items")
+				// DEBUG : console.log(err);
 				res.status(500).send({});
 			} else {
 				res.status(200).send(result);
@@ -22,6 +62,7 @@ var deadline = new Date("2018-02-16T19:40:05Z");
 	exports.addBid = function (req,res) {
 
 		var user = req.body.user;
+		var id = req.body.user.toLowerCase();
 		var code = req.body.code;
 		var amount = +req.body.amount;
 		var date = new Date();
@@ -41,66 +82,70 @@ var deadline = new Date("2018-02-16T19:40:05Z");
 		//0 - Check if auction is still on
 		if (date > deadline) {
 
-			console.log("bidding is over");
+			// DEBUG : console.log("bidding is over");
 			res.status(500).send(error[3]);
 
 		//1 - Check if anything is empty
 		} else if (!user) {
 
-			console.log("emtpy user");
+			// DEBUG : console.log("emtpy user");
 			res.status(500).send(error[0])
 
 		} else {
 
 	    //FIRST CHECK USER
-	    mongodb.findByUser(userCollection, user, function (err,result) {
+	    mongodb.findUserByID(userCollection, id, function (err,result) {
 
-				if (err){
-					res.status(500).send({});
+			if (err){
+				res.status(500).send({});
+			} else {
+
+				//CHECK IF WE HAD A RESULT
+				if (result==null) {
+					logger.warn(timestamp(new Date()) + user + "- Este usuario no existe");
+					// DEBUG : console.log("user doesn't exist");
+					res.status(500).send(error[1]);
 				} else {
 
-					//CHECK IF WE HAD A RESULT
-					if (result==null) {
-						console.log("user doesn't exist");
-						res.status(500).send(error[1]);
-					} else {
+					var dbCode = result.code;
+					
+					//NOW CHECK IF USER CODE IS CORRECT
+					if (code !== dbCode) {
+						logger.warn(timestamp(new Date()) + user + " - este usuario no va con el codigo - " + code);
+						// DEBUG : console.log("code is incorrect");
+						res.status(500).send(error[2]);
+					}	else {
 
-						var dbCode = result.code;
-						
-						//NOW CHECK IF USER CODE IS CORRECT
-						if (code !== dbCode) {
-							console.log("code is incorrect");
-							res.status(500).send(error[2]);
-						}	else {
+						//NOW CHECK IF BID IS BIGGER THAN CURRENTBID
+						mongodb.findByName(auctionCollection, name, function (err,result) {
 
-							//NOW CHECK IF BID IS BIGGER THAN CURRENTBID
-							mongodb.findByName(auctionCollection, name, function (err,result) {
+							var currentAmount = +result[0].bids[0].amount;
 
-								var currentAmount = +result[0].bids[0].amount;
+							//CHECK IF AMOUNT IS LARGER THAN CURRENT AMOUNT
+							if (amount > currentAmount + 19.99) {
 
-								//CHECK IF AMOUNT IS LARGER THAN CURRENT AMOUNT
-								if (amount > currentAmount + 19.99) {
+								//PUSH BID TO BIDS ARRAY
+								mongodb.updateBids(auctionCollection, name, bid, function (err,result) {
+									if (err) {
+										res.status(500).send({});
+									} else {
+										res.status(200).send(bid);	
+										logger.info(timestamp(new Date) + "{{BID}} : " + bid.bidder + " = " + bid.amount + "€");
+									}
+								})
 
-									//PUSH BID TO BIDS ARRAY
-									mongodb.updateBids(auctionCollection, name, bid, function (err,result) {
-										if (err) {
-											res.status(500).send({});
-										} else {
-											res.status(200).send(bid);	
-										}
-									})
+							} else {
+								logger.warn(timestamp(new Date) + user + " - está intentando pujar poquete");
+								// DEBUG : console.log("amount is insufficient");
+								error[4].currentBid = result[0].bids[0];
+								res.status(500).send(error[4]);
+							}
 
-								} else {
-									console.log("amount is insufficient");
-									error[4].currentBid = result[0].bids[0];
-									res.status(500).send(error[4]);
-								}
-
-							})
-						} 	
-					};
-				}
-			});	
+						})
+					} 	
+				};
+			}
+		});	
   	
   	}     
 

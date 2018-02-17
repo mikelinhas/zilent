@@ -72,6 +72,11 @@ var db;
         });
     };
 
+    exports.findUserByID = function(collectionName, id, cb){
+        db.collection(collectionName, function(err, collection) {
+            collection.findOne({'_id': id}, cb );
+        });
+    };
 
 // Updates
     exports.updateBids = function(collectionName, name, bid, cb){  //same as insert
