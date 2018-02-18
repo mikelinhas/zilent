@@ -109,8 +109,6 @@ mongodb.init(function (err, db) {
 		
 		console.log("Connected to MongoDB! Yay!")
 
-		var collection = db.collection("auction");
-
 	    mongodb.insert('auction', items, function (err, result) {
 	    	if (err) {
 	    		console.log (err);

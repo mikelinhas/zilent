@@ -2,7 +2,7 @@ var mongodb = require('./mongo')
 var auctionCollection = "auction"
 var userCollection = "users"
 
-var deadline = new Date("2018-02-18T14:45:03Z");
+var deadline = new Date("2018-02-18T16:00:03Z");
 // Note: must be one hour less than in Spain
 
 var winston = require('winston');
@@ -74,7 +74,7 @@ const logger = winston.createLogger({
 			{"type": 0, "message": "Rellene el usuario"},
 			{"type": 1, "message": "El usuario no existe"},
 			{"type": 2, "message": "Contraseña incorrecta"},
-			{"type": 3, "message": "Demasiado tarde, la subasta ha acabado :("},
+			{"type": 3, "message": "Demasiado tarde, la subasta ha acabado"},
 			{"type": 4, "message": "Insufficient amount"}
 		];
 
@@ -107,6 +107,7 @@ const logger = winston.createLogger({
 					res.status(500).send(error[1]);
 				} else {
 
+					bid.bidder = result.user;
 					var dbCode = result.code;
 					
 					//NOW CHECK IF USER CODE IS CORRECT
