@@ -2,7 +2,7 @@ var mongodb = require('./mongo')
 var auctionCollection = "auction"
 var userCollection = "users"
 
-var deadline = new Date("2018-02-18T16:00:03Z");
+var deadline = new Date("2018-02-22T22:30:03Z");
 // Note: must be one hour less than in Spain
 
 var winston = require('winston');
@@ -62,11 +62,13 @@ const logger = winston.createLogger({
 	exports.addBid = function (req,res) {
 
 		var user = req.body.user;
-		var id = req.body.user.toLowerCase();
+		var user_id = req.body.user.toLowerCase();
 		var code = req.body.code;
 		var amount = +req.body.amount;
 		var date = new Date();
 		var name = req.body.name;
+		var item_id = req.body.id;
+		console.log(item_id);
 
 		var bid = {"date": date, "bidder": user, "amount": amount};
 
@@ -75,7 +77,7 @@ const logger = winston.createLogger({
 			{"type": 1, "message": "El usuario no existe"},
 			{"type": 2, "message": "Contraseña incorrecta"},
 			{"type": 3, "message": "Demasiado tarde, la subasta ha acabado"},
-			{"type": 4, "message": "Insufficient amount"}
+			{"type": 4, "message": "Cantidad insuficiente"}
 		];
 
 
@@ -94,7 +96,7 @@ const logger = winston.createLogger({
 		} else {
 
 	    //FIRST CHECK USER
-	    mongodb.findUserByID(userCollection, id, function (err,result) {
+	    mongodb.findUserByID(userCollection, user_id, function (err,result) {
 
 			if (err){
 				res.status(500).send({});
@@ -102,7 +104,7 @@ const logger = winston.createLogger({
 
 				//CHECK IF WE HAD A RESULT
 				if (result==null) {
-					logger.warn(timestamp(new Date()) + user + "- Este usuario no existe");
+					logger.warn(timestamp(new Date()) + user + " : Este usuario no existe");
 					// DEBUG : console.log("user doesn't exist");
 					res.status(500).send(error[1]);
 				} else {
@@ -112,7 +114,7 @@ const logger = winston.createLogger({
 					
 					//NOW CHECK IF USER CODE IS CORRECT
 					if (code !== dbCode) {
-						logger.warn(timestamp(new Date()) + user + " - este usuario no va con el codigo - " + code);
+						logger.warn(timestamp(new Date()) + user + " : " + code + " - contraseña incorrecta.");
 						// DEBUG : console.log("code is incorrect");
 						res.status(500).send(error[2]);
 					}	else {
@@ -131,12 +133,12 @@ const logger = winston.createLogger({
 										res.status(500).send({});
 									} else {
 										res.status(200).send(bid);	
-										logger.info(timestamp(new Date) + "{{BID}} : " + bid.bidder + " = " + bid.amount + "€");
+										logger.info(timestamp(new Date) + bid.bidder + " : {{" + bid.amount + "€ = " + item_id + "}}");
 									}
 								})
 
 							} else {
-								logger.warn(timestamp(new Date) + user + " - está intentando pujar poquete");
+								logger.warn(timestamp(new Date) + user + " : Está intentando pujar poquete por " + item_id);
 								// DEBUG : console.log("amount is insufficient");
 								error[4].currentBid = result[0].bids[0];
 								res.status(500).send(error[4]);
