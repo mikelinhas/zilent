@@ -38,10 +38,10 @@ var items =
 	"bids": [{"bidder": "","amount": 340}]
 	},
 
-	{"_id":"Noname",
-	"artist":"John Doe",
+	{"_id":"Txillida",
+	"artist":"Petro Txillida",
 	"name":"No idea",
-	"image":"Noname",
+	"image":"Txillida",
 	"bids": [{"bidder": "","amount": 10}]
 	},
 
@@ -91,6 +91,13 @@ var items =
 	"artist":"FC Barcelona",
 	"name":"Camiseta FCB firmada por los jugadores",
 	"image":"FCBarcelona",
+	"bids": [{"bidder": "","amount": 300}]
+	},
+
+	{"_id":"ATMadid",
+	"artist":"AT Madrid",
+	"name":"Camiseta ATM firmada por los jugadores",
+	"image":"ATMadrid",
 	"bids": [{"bidder": "","amount": 300}]
 	},
 

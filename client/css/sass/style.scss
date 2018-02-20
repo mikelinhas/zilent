@@ -45,3 +45,23 @@
 body {
 	padding-top: 40px;
 }
+
+footer {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+	
+	> p {
+		margin-bottom: 0px !important;
+	}
+
+	> p > a {
+		color: $text-color !important;
+		text-decoration: none !important;
+	} 
+
+}
+
+.orator {
+	font-family: $font-family-orator
+}

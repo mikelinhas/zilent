@@ -4335,4 +4335,17 @@ tbody.collapse.in {
 body {
   padding-top: 40px; }
 
+footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center; }
+  footer > p {
+    margin-bottom: 0px !important; }
+  footer > p > a {
+    color: #333333 !important;
+    text-decoration: none !important; }
+
+.orator {
+  font-family: "orator", sans-serif; }
+
 /*# sourceMappingURL=style.css.map */
