@@ -114,7 +114,7 @@ const logger = winston.createLogger({
 					
 					//NOW CHECK IF USER CODE IS CORRECT
 					if (code !== dbCode) {
-						logger.warn(timestamp(new Date()) + user + " : " + code + " - contraseña incorrecta.");
+						logger.warn(timestamp(new Date()) + user + " : Contraseña incorrecta - " + code);
 						// DEBUG : console.log("code is incorrect");
 						res.status(500).send(error[2]);
 					}	else {
