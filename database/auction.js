@@ -133,12 +133,12 @@ const logger = winston.createLogger({
 										res.status(500).send({});
 									} else {
 										res.status(200).send(bid);	
-										logger.info(timestamp(new Date) + bid.bidder + " : {{" + bid.amount + "€ = " + item_id + "}}");
+										logger.info(timestamp(new Date) + bid.bidder + " : " + bid.amount + "€ - " + item_id);
 									}
 								})
 
 							} else {
-								logger.warn(timestamp(new Date) + user + " : Está intentando pujar poquete por " + item_id);
+								logger.warn(timestamp(new Date) + user + " : Puja insuficiente - " + item_id);
 								// DEBUG : console.log("amount is insufficient");
 								error[4].currentBid = result[0].bids[0];
 								res.status(500).send(error[4]);
