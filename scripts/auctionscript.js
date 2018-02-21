@@ -39,10 +39,10 @@ var items =
 	},
 
 	{"_id":"Txillida",
-	"artist":"Petro Txillida",
-	"name":"No idea",
+	"artist":"Pedro Txillida",
+	"name":"B. De la serie Abecedario",
 	"image":"Txillida",
-	"bids": [{"bidder": "","amount": 10}]
+	"bids": [{"bidder": "","amount": 250}]
 	},
 
 	{"_id":"Torres",
@@ -94,7 +94,7 @@ var items =
 	"bids": [{"bidder": "","amount": 300}]
 	},
 
-	{"_id":"ATMadid",
+	{"_id":"ATMadrid",
 	"artist":"AT Madrid",
 	"name":"Camiseta ATM firmada por los jugadores",
 	"image":"ATMadrid",

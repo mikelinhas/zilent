@@ -62,7 +62,6 @@ const logger = winston.createLogger({
 	exports.addBid = function (req,res) {
 
 		var user = req.body.user;
-		var user_id = req.body.user.toLowerCase();
 		var code = req.body.code;
 		var amount = +req.body.amount;
 		var date = new Date();
@@ -90,12 +89,13 @@ const logger = winston.createLogger({
 		//1 - Check if anything is empty
 		} else if (!user) {
 
-			// DEBUG : console.log("emtpy user");
+			// DEBUG : console.log(error[0].message);
 			res.status(500).send(error[0])
 
 		} else {
-
 	    //FIRST CHECK USER
+
+ 		var user_id = req.body.user.toLowerCase();
 	    mongodb.findUserByID(userCollection, user_id, function (err,result) {
 
 			if (err){
