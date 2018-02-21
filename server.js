@@ -5,6 +5,7 @@
 //Express
 var express = require('express');
 var app = express();
+var port = 3000
 
 // other Dependencies
 var fs = require('fs');
@@ -31,7 +32,7 @@ var errorHandler = require('errorhandler');
  */
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || port);
 app.set('views', __dirname + '/client');
 app.set('view engine', 'ejs');
 app.use(logger('dev'));
