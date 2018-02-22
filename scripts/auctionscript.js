@@ -106,6 +106,27 @@ var items =
 	"name":"Camiseta FCB firmada por Iniesta",
 	"image":"Iniesta",
 	"bids": [{"bidder": "","amount": 300}]
+	},
+
+	{"_id":"Corbalan",
+	"artist": "Juan Antonio Corbalán",
+	"name": "Camiseta vintage R. Madrid baloncesto",
+	"image": "Corbalan",
+	"bids": [{"bidder": "", "amount": 300}]
+	},
+
+	{"_id":"Ronaldo",
+	"artist":"Cristiano Ronaldo",
+	"name":"Camiseta RM firmada por Ronaldo",
+	"image": "Ronaldo",
+	"bids": [{"bidder": "", "amount": 300}]
+	},
+
+	{"_id":"Oyarzabal",
+	"artist":"Mikel Oyarzabal",
+	"name":"Camiseta R. Sociedad firmada por Oyarzabal",
+	"image": "Oyarzabal",
+	"bids": [{"bidder": "", "amount": 300}]
 	}
 ]
 

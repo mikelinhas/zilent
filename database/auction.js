@@ -2,7 +2,7 @@ var mongodb = require('./mongo')
 var auctionCollection = "auction"
 var userCollection = "users"
 
-var deadline = new Date("2018-02-22T22:30:03Z");
+var deadline = new Date("2018-02-22T22:45:03Z");
 // Note: must be one hour less than in Spain
 
 var winston = require('winston');
